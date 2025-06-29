@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAAS MODERN INT'L GROUPS OF SCHOOLS | Living to learn, Learning to live!</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Lexend) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom styles for a clean, modern, and attractive UI */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            --color-primary: #003366; /* Professional Navy Blue */
+            --color-secondary: #D4AF37; /* Soft Gold */
+            --color-accent: #F5F5F5; /* Light Gray */
+            background-color: #FFFFFF; /* Clean White background */
+        }
+        /* Use font-weight for headings instead of a separate serif font */
+        .font-serif {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+        }
+        /* Style for the static hero section background */
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7)), url('images/bg-2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .cta-button {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-secondary);
+            transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .section-title {
+            color: var(--color-primary);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Improved Hamburger Menu Styles */
+        .hamburger-button {
+            width: 28px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 0;
+            border: none;
+            background: transparent;
+        }
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+        .hamburger-button.open .hamburger-line-top {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger-button.open .hamburger-line-middle {
+            opacity: 0;
+        }
+        .hamburger-button.open .hamburger-line-bottom {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        /* Prevent body scroll when mobile menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-2">
+                     <img src="images/logo-2.png" alt="MAAS Modern Logo" class="h-12">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#intro" class="nav-link font-medium text-gray-600">About Us</a>
+                    <a href="#approach" class="nav-link font-medium text-gray-600">Approach</a>
+                    <a href="#locations" class="nav-link font-medium text-gray-600">Locations</a>
+                    <a href="#admissions" class="nav-link font-medium text-gray-600">Admissions</a>
+                    <a href="#contact" class="nav-link font-medium text-gray-600">Contact</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="hamburger-button z-50">
+                        <span class="hamburger-line hamburger-line-top"></span>
+                        <span class="hamburger-line hamburger-line-middle"></span>
+                        <span class="hamburger-line hamburger-line-bottom"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[var(--color-primary)]/95 backdrop-blur-sm transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40">
+        <nav class="flex flex-col items-center justify-center h-full space-y-8 text-center">
+            <a href="#intro" class="mobile-link text-2xl font-semibold text-white hover:text-[var(--color-secondary)]">About Us</a>
+            <a href="#approach" class="mobile-link text-2xl font-semibold text-white hover:text-[var(--color-secondary)]">Approach</a>
+            <a href="#locations" class="mobile-link text-2xl font-semibold text-white hover:text-[var(--color-secondary)]">Locations</a>
+            <a href="#admissions" class="mobile-link text-2xl font-semibold text-white hover:text-[var(--color-secondary)]">Admissions</a>
+            <a href="#contact" class="mobile-link text-2xl font-semibold text-white hover:text-[var(--color-secondary)]">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section text-white h-[85vh] min-h-[600px] flex items-center">
+            <div class="container mx-auto px-6">
+                <div class=" max-w-2xl">
+                    <h1 class="font-serif text-4xl md:text-6xl font-bold mb-4 drop-shadow-md">MAAS MODERN INT'L GROUPS OF SCHOOLS</h1>
+                    <p class="text-xl md:text-2xl font-light text-gray-200 drop-shadow-sm">
+                        Living to learn, Learning to live!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="intro" class="py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+                    <div class="w-full lg:w-6/12 fade-in">
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold section-title mb-5">Shaping Lives, Building Future Leaders</h2>
+                        <p class="text-base text-gray-600 mb-6 leading-relaxed">
+                            MAAS MODERN INT'L GROUPS OF SCHOOLS is a leading educational institution dedicated to using education as a transformative tool. Established in 2012 in Habitat, Abidjan, Ivory Coast, the school has expanded its presence across West Africa, with a commitment to nurturing young minds for excellence, leadership, and innovation.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8 text-center">
+                            <div class="stat-item p-4 bg-gray-50 rounded-lg">
+                                <h3 class="font-serif text-4xl font-bold text-[var(--color-primary)] mb-1">5+</h3>
+                                <p class="text-gray-500 text-sm">Branches</p>
+                            </div>
+                            <div class="stat-item p-4 bg-gray-50 rounded-lg">
+                                <h3 class="font-serif text-4xl font-bold text-[var(--color-primary)] mb-1">3</h3>
+                                <p class="text-gray-500 text-sm">Countries</p>
+                            </div>
+                            <div class="stat-item p-4 bg-gray-50 rounded-lg col-span-2 sm:col-span-1">
+                                <h3 class="font-serif text-4xl font-bold text-[var(--color-primary)] mb-1">10+</h3>
+                                <p class="text-gray-500 text-sm">Years of Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-5/12 relative">
+                        <div class="fade-in">
+                             <img src="https://placehold.co/600x650/003366/ffffff?text=Future+Leaders" alt="Students at MAAS" class="w-full h-full object-cover rounded-lg shadow-xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Core Values Section -->
+        <section id="values" class="py-20 lg:py-24 bg-[var(--color-accent)]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold section-title mb-12 fade-in">Our Core Values</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                    <div class="fade-in" style="transition-delay: 100ms;"><i data-lucide="star" class="h-10 w-10 mx-auto text-[var(--color-secondary)] mb-3"></i><h3 class="font-semibold text-lg text-gray-800">Excellence</h3></div>
+                    <div class="fade-in" style="transition-delay: 200ms;"><i data-lucide="shield-check" class="h-10 w-10 mx-auto text-[var(--color-secondary)] mb-3"></i><h3 class="font-semibold text-lg text-gray-800">Integrity</h3></div>
+                    <div class="fade-in" style="transition-delay: 300ms;"><i data-lucide="lightbulb" class="h-10 w-10 mx-auto text-[var(--color-secondary)] mb-3"></i><h3 class="font-semibold text-lg text-gray-800">Innovation</h3></div>
+                    <div class="fade-in" style="transition-delay: 400ms;"><i data-lucide="users" class="h-10 w-10 mx-auto text-[var(--color-secondary)] mb-3"></i><h3 class="font-semibold text-lg text-gray-800">Leadership</h3></div>
+                    <div class="fade-in" style="transition-delay: 500ms;"><i data-lucide="gem" class="h-10 w-10 mx-auto text-[var(--color-secondary)] mb-3"></i><h3 class="font-semibold text-lg text-gray-800">Discipline</h3></div>
+                    <div class="fade-in" style="transition-delay: 600ms;"><i data-lucide="heart-handshake" class="h-10 w-10 mx-auto text-[var(--color-secondary)] mb-3"></i><h3 class="font-semibold text-lg text-gray-800">Community</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Approach Section -->
+        <section id="approach" class="py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold section-title mb-5 fade-in">Our Educational Approach</h2>
+                    <p class="text-base text-gray-600 mb-12 fade-in" style="transition-delay: 100ms;">
+                        We adopt a student-centered approach that integrates modern teaching methodologies and a well-structured curriculum to ensure students develop both academic excellence and practical life skills.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-[var(--color-secondary)] fade-in" style="transition-delay: 200ms;">
+                        <i data-lucide="atom" class="h-10 w-10 text-[var(--color-primary)] mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">STEM Education</h3>
+                        <p class="text-gray-600">Emphasis on Science, Technology, Engineering, and Mathematics to prepare for the future.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-[var(--color-secondary)] fade-in" style="transition-delay: 300ms;">
+                        <i data-lucide="award" class="h-10 w-10 text-[var(--color-primary)] mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Leadership & Character</h3>
+                        <p class="text-gray-600">Developing well-rounded individuals through leadership training and moral guidance.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-[var(--color-secondary)] fade-in" style="transition-delay: 400ms;">
+                        <i data-lucide="languages" class="h-10 w-10 text-[var(--color-primary)] mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cultural & Language Diversity</h3>
+                        <p class="text-gray-600">Promoting a global mindset with a focus on cultural and linguistic variety.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section id="locations" class="py-20 lg:py-24 bg-[var(--color-accent)]">
+            <div class="container mx-auto px-6">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold section-title text-center mb-12 fade-in">Our Locations</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="fade-in" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><img src="https://flagcdn.com/ci.svg" width="30" class="mr-3 rounded-sm" alt="Ivory Coast Flag"> Ivory Coast</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-600">
+                            <li>Habitat Adjame</li>
+                            <li>Williams Ville</li>
+                            <li>Macaci</li>
+                        </ul>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 300ms;">
+                         <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><img src="https://flagcdn.com/ng.svg" width="30" class="mr-3 rounded-sm" alt="Nigeria Flag"> Nigeria</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-600">
+                            <li>Owode, Oyo State</li>
+                            <li>Kajola Ajaah, Lagos State</li>
+                            <li>Ikorodu, Lagos State</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center mt-12 text-gray-600 fade-in" style="transition-delay: 400ms;">...and our Ghana annex in Kumasi is under construction!</p>
+            </div>
+        </section>
+
+        <!-- Admissions Section -->
+        <section id="admissions" class="py-20 lg:py-24 bg-[var(--color-primary)] text-white">
+            <div class="container mx-auto px-6 text-center">
+                 <div class="max-w-3xl mx-auto fade-in">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-5">Join the MAAS Family</h2>
+                    <p class="text-base text-gray-300 mb-8">
+                        We welcome students from diverse backgrounds who are eager to learn and grow. Admission follows a transparent and merit-based process. Contact us to begin your journey.
+                    </p>
+                    <a href="#contact" class="bg-[var(--color-secondary)] text-[var(--color-primary)] px-8 py-3 rounded-full cta-button font-bold text-base hover:bg-opacity-90">
+                        Enrollment Inquiries
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-1">
+                    <h4 class="font-semibold text-white tracking-wider uppercase mb-4">Contact Info</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><i data-lucide="mail" class="h-5 w-5 mr-3 mt-1 flex-shrink-0 text-[var(--color-secondary)]"></i><a href="mailto:sirmassmodern@gmail.com" class="hover:text-white">sirmassmodern@gmail.com</a></li>
+                        <li class="flex items-start"><i data-lucide="phone" class="h-5 w-5 mr-3 mt-1 flex-shrink-0 text-[var(--color-secondary)]"></i><div><a href="tel:+2250555907013" class="hover:text-white">+225 05 55 90 70 13</a><br><a href="tel:+2250504331082" class="hover:text-white">+225 05 04 33 10 82</a></div></li>
+                    </ul>
+                </div>
+                <div>
+                     <h4 class="font-semibold text-white tracking-wider uppercase mb-4">Head Office (CI)</h4>
+                     <p class="text-gray-400">Quartier Kennedy, Williams Ville | MacaCI | Habitat, Abidjan, Ivory Coast</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white tracking-wider uppercase mb-4">Nigeria Offices</h4>
+                    <p class="text-gray-400">Kajola Ajaah | Owode, Oyo State | Ikorodu, Lagos State</p>
+                </div>
+            </div>
+            <div class="mt-16 border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 MAAS MODERN INT'L GROUPS OF SCHOOLS. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        function toggleMenu() {
+            const isMenuOpen = mobileMenuButton.classList.toggle('open');
+            body.classList.toggle('menu-open', isMenuOpen);
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (body.classList.contains('menu-open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // --- Intersection Observer for Animations ---
+        const animatedElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+    </script>
+
+</body>
+</html>
